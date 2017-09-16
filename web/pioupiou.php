@@ -31,7 +31,8 @@ try {
 	    $message = $response['data']['meta']['name']." vent moyen ".$measurements['wind_speed_avg'].' kilomètre heure';
 	}
 
-} catch (Exception $e) {
+} catch (TypeError $e) {
+
 	$message = $e->getMessage();
 }
 
