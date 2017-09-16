@@ -4,18 +4,12 @@ ini_set('display_errors', 'On');
 
 require __DIR__ . '/../vendor/autoload.php';
 
-
-//$rawData = $request->getContent(); // This is how you would retrieve this with Laravel or Symfony 2.
-
-
 try {
 		
 	$rawData = file_get_contents("php://input");
-	$request = new \APIAI\Request\Request($rawData);
-	$result = $request->getResult();
-	$station_id = $result['parameters']['station_id'];
-
-	//var_dump($request);exit;
+	$post = json_decode($rawData, true);
+	//file_put_contents("post.log",print_r($post,true));
+	$station_id = $result['result']['parameters']['station_id'];
 
 	$curl = new Curl\Curl();
 	$curl->get('http://api.pioupiou.fr/v1/live/'.$station_id);
