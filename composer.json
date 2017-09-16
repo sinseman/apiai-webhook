@@ -1,0 +1,5 @@
+{
+    "require": {
+        "20steps/api-ai-webhook-php": "dev-master"
+    }
+}

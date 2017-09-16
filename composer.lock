@@ -1,0 +1,67 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "074bb25812974d74b3107f39710fa341",
+    "content-hash": "1c4eba74e85773104273659a24562dd9",
+    "packages": [
+        {
+            "name": "20steps/api-ai-webhook-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/20steps/api-ai-webhook-php.git",
+                "reference": "ebccbbefbe8a65f9eb0acb0b3c12554b30f86aaf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/20steps/api-ai-webhook-php/zipball/ebccbbefbe8a65f9eb0acb0b3c12554b30f86aaf",
+                "reference": "ebccbbefbe8a65f9eb0acb0b3c12554b30f86aaf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "APIAI\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Helmut Hoffer von Ankershoffen",
+                    "email": "hhva@20steps.de"
+                }
+            ],
+            "description": "API AI Webhook interface for PHP",
+            "keywords": [
+                "Google Actions",
+                "Google Home",
+                "ai",
+                "api",
+                "php"
+            ],
+            "time": "2017-08-16 09:53:18"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "20steps/api-ai-webhook-php": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
