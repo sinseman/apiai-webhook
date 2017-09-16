@@ -4,18 +4,25 @@ ini_set('display_errors', 'On');
 
 require __DIR__ . '/../vendor/autoload.php';
 
+$station_id = $_POST['result']['parameters']['station_id'];
 
-//$rawData = $request->getContent(); // This is how you would retrieve this with Laravel or Symfony 2.
-//$request = new \APIAI\Request\Request('test');
-//$request = $request->fromData();
+$curl = new Curl\Curl();
+$curl->get('http://api.pioupiou.fr/v1/live/'.$station_id);
 
-//var_dump($request);exit;
+if ($curl->error) {
+    //$curl->error_code;
+    $message = 'Erreur de communication avec Pioupiou';
+}
+else {
+    $response = json_decode($curl->response, true);
+
+    $measurements = $response['data']["measurements"];
+    $message = $response['data']['meta']['name']." vent moyen ".$measurements['wind_speed_avg'].' kilomètre heure';
+}
 
 $response = new \APIAI\Response\Response('pioupiou');
-$response->respond('Cooool. I\'ll lower the temperature a bit for you!')
-	->withDisplayText('Temperature decreased by 2 degrees')
-	->withCard('My card title','My formatted text');
-
+$response->respond($message)
+	->withDisplayText($message);
 
 header('Content-Type: application/json');
 echo json_encode($response->render());
