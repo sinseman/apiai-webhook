@@ -71,7 +71,7 @@ try {
 			}
 		}
 
-	    $message = $response['data']['meta']['name']." vent moyen ".$direction.' '.$measurements['wind_speed_avg'].' kilomètre heure';
+	    $message = $response['data']['meta']['name'].' vent moyen '.$direction.' '.$measurements['wind_speed_avg'].' kilomètre heure, maxi '.$measurements['wind_speed_max'].' mini '.$measurements['wind_speed_min'];
 	}
 
 } catch (TypeError $e) {
