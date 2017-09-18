@@ -63,14 +63,15 @@ try {
 		);
 
 		foreach ($degrees as $k => $degree) {
-			$nextDegree = (isset($degree[$k + 1]))? $degree[$k + 1]: $degree[0];
+			$nextDegree = (isset($degrees[$k + 1]))? $degrees[$k + 1]: $degrees[0];
 
 			if ($wind_heading >= $degree && $wind_heading < $nextDegree){
+				$direction = $directions[$k];
 				break;
 			}
 		}
 
-	    $message = $response['data']['meta']['name']." vent moyen ".$directions[$k].' '.$measurements['wind_speed_avg'].' kilomètre heure';
+	    $message = $response['data']['meta']['name']." vent moyen ".$direction.' '.$measurements['wind_speed_avg'].' kilomètre heure';
 	}
 
 } catch (TypeError $e) {
