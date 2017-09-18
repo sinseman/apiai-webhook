@@ -9,7 +9,7 @@ try {
 	$rawData = file_get_contents("php://input");
 	$post = json_decode($rawData, true);
 	//file_put_contents("post.log",print_r($post,true));
-	$station_id = $result['result']['parameters']['station_id'];
+	$station_id = $post['result']['parameters']['station_id'];
 
 	$curl = new Curl\Curl();
 	$curl->get('http://api.pioupiou.fr/v1/live/'.$station_id);
