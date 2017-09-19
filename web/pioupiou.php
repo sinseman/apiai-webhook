@@ -24,24 +24,10 @@ try {
 	    $measurements = $response['data']["measurements"];
 	    $wind_heading = $measurements['wind_heading'];
 
-		$degrees = array(
-			348.75,
-			11.25,
-			33.75,
-			56.25,
-			78.75,
-			101.25,
-			123.75,
-			146.25,
-			168.75,
-			191.25,
-			213.75,
-			236.25,
-			258.75,
-			281.25,
-			303.75,
-			326.25,
-		);
+		$k = ceil(($wind_heading - 11.25)/22.5);
+		if ($k > 15) {
+			$k = 0;
+		}
 
 		$directions = array(
 			'Nord',
@@ -62,14 +48,7 @@ try {
 			'Nord-Nord-Ouest',
 		);
 
-		foreach ($degrees as $k => $degree) {
-			$nextDegree = (isset($degrees[$k + 1]))? $degrees[$k + 1]: $degrees[0];
-
-			if ($wind_heading >= $degree && $wind_heading < $nextDegree){
-				$direction = $directions[$k];
-				break;
-			}
-		}
+		$direction = $directions[$k];
 
 	    $message = $response['data']['meta']['name'].' vent moyen '.$direction.' '.round($measurements['wind_speed_avg']).' kilomètre heure, maxi '.round($measurements['wind_speed_max']).', mini '.round($measurements['wind_speed_min']);
 	}
